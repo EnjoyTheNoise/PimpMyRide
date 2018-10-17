@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PimpMyRide.Core", "src\Pimp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PimpMyRide.Core.UnitTests", "test\PimpMyRide.Core.UnitTests\PimpMyRide.Core.UnitTests.csproj", "{5AD98783-01D5-4099-AD84-B2F6E1FFDA09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PimpMyRide.Core.Api", "PimpMyRide.Core.Api\PimpMyRide.Core.Api.csproj", "{15A1C0C2-A17E-458D-8A7C-00F460B3E481}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PimpMyRide.Core.Api", "src\PimpMyRide.Core.Api\PimpMyRide.Core.Api.csproj", "{15A1C0C2-A17E-458D-8A7C-00F460B3E481}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PimpMyRide.Core.Data", "PimpMyRide.Core.Data\PimpMyRide.Core.Data.csproj", "{F7B5FEAD-2AD5-4A0B-A3CD-D85FBE243A33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PimpMyRide.Core.Data", "src\PimpMyRide.Core.Data\PimpMyRide.Core.Data.csproj", "{F7B5FEAD-2AD5-4A0B-A3CD-D85FBE243A33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
