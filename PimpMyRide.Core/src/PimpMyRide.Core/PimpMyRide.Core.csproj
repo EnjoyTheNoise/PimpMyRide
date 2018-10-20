@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\PimpMyRide.Core.Data\PimpMyRide.Core.Data.csproj" />
+    <ProjectReference Include="..\PimpMyRide.Core.Data\PimpMyRide.Core.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PimpMyRide.Core.Data\PimpMyRide.Core.Data.csproj" />
-    <ProjectReference Include="..\src\PimpMyRide.Core\PimpMyRide.Core.csproj" />
+    <ProjectReference Include="..\PimpMyRide.Core\PimpMyRide.Core.csproj" />
   </ItemGroup>
 
 </Project>
