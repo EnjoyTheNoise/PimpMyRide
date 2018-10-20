@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using PimpMyRide.Core.Data.Context;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace PimpMyRide.Core.Api
 {
@@ -23,7 +23,26 @@ namespace PimpMyRide.Core.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddMvc();
+            services.AddDbContext<PimpMyRideDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("AzureDB")));
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("PMR-Core", new Info
+                {
+                    Version = "1.0",
+                    Title = "PMR",
+                    Description = "PMR - Swagger API Documentation"
+                });
+            });
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(assembly => assembly.FullName.StartsWith("PimpMyRide")).ToArray();
+            builder.RegisterAssemblyModules(assemblies);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,7 +53,11 @@ namespace PimpMyRide.Core.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(
+                options => { options.SwaggerEndpoint("/swagger/PMR-Core/swagger.json", "Pimp My Ride Server"); });
         }
     }
 }
