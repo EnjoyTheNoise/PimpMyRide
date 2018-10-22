@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Autofac;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,7 @@ namespace PimpMyRide.Core.Api
             services.AddMvc();
             services.AddDbContext<PimpMyRideDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("AzureDB")));
-
+            services.AddAutoMapper();
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("PMR-Core", new Info
@@ -57,7 +58,7 @@ namespace PimpMyRide.Core.Api
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(
-                options => { options.SwaggerEndpoint("/swagger/PMR-Core/swagger.json", "Pimp My Ride Server"); });
+                options => { options.SwaggerEndpoint("/swagger/PMR-Core/swagger.json", "Pimp My Ride"); });
         }
     }
 }

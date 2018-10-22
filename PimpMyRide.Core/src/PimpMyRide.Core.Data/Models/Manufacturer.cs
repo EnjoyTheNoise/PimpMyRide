@@ -10,6 +10,6 @@ namespace PimpMyRide.Core.Data.Models
         [Required]
         public string Name { get; set; }
 
-        public int NumberOfCars { get; set; }
+        public int? NumberOfCars { get; set; }
     }
 }
