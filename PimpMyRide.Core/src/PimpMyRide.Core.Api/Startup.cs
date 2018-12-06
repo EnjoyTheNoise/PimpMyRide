@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using Autofac;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using PimpMyRide.Core.Api.Infrastructure.Middleware;
 using PimpMyRide.Core.Data.Context;
+using PimpMyRide.Core.Infrastructure.Options;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace PimpMyRide.Core.Api
@@ -29,6 +34,24 @@ namespace PimpMyRide.Core.Api
             services.AddDbContext<PimpMyRideDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("AzureDB")));
             services.AddAutoMapper();
+            services.AddDistributedMemoryCache();
+
+            var jwtSection = Configuration.GetSection("Jwt");
+            var jwtOptions = new JwtOptions();
+            jwtSection.Bind(jwtOptions);
+            services.Configure<JwtOptions>(jwtSection);
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidIssuer = jwtOptions.Issuer,
+                        ValidAudience = jwtOptions.Issuer,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.Key))
+                    };
+                });
+
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("PMR-Core", new Info
@@ -55,6 +78,8 @@ namespace PimpMyRide.Core.Api
             }
 
             app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+            app.UseAuthentication();
+            app.UseMiddleware<TokenManagerMiddleware>();
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(

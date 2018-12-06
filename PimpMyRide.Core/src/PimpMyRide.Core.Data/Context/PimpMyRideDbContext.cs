@@ -9,6 +9,7 @@ namespace PimpMyRide.Core.Data.Context
 
         public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
-        public virtual DbSet<EngineType> EngingeTypes { get; set; }
+        public virtual DbSet<EngineType> EngineTypes { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

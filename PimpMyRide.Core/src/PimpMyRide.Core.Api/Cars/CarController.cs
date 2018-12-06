@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PimpMyRide.Core.Api.Infrastructure;
@@ -10,6 +11,7 @@ using PimpMyRide.Core.Cars.Dto;
 namespace PimpMyRide.Core.Api.Cars
 {
     [Route("api/car")]
+    [AllowAnonymous]
     public class CarController : Controller
     {
         private readonly ICarService _carService;
