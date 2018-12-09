@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PimpMyRide.Core.Api.Infrastructure;
-using PimpMyRide.Core.Cars.Dto;
 using PimpMyRide.Core.RentCars;
 using PimpMyRide.Core.RentCars.Dto;
 
@@ -27,10 +22,10 @@ namespace PimpMyRide.Core.Api.RentCars
         [HttpPost]
         [ProducesResponseType(typeof(RentCarResponseDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> RentCar([FromBody] RentCarRequestDto dto, int id,
+        public async Task<IActionResult> RentCar([FromBody] RentCarRequestDto dto,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var result = await _rentCarService.RentCar(dto, id, cancellationToken);
+            var result = await _rentCarService.RentCar(dto, cancellationToken);
 
             if (result == null)
             {
@@ -53,8 +48,7 @@ namespace PimpMyRide.Core.Api.RentCars
                 return BadRequest(new ApiResponse(StatusCodes.Status400BadRequest));
             }
 
-            var response = new ApiOkResponse(result);
-            return Ok(response);
+            return NoContent();
         }
     }
 }

@@ -10,16 +10,22 @@ namespace PimpMyRide.Core.Data.Models
     {
         [Key]
         public int Id { get; set; }
+
         [Required]
         [ForeignKey("User")]
         public int UserId { get; set; }
+
         public User User { get; set; }
+
         [Required]
         [ForeignKey("Car")]
         public int CarId { get; set; }
+
         public Car Car { get; set; }
+
         [Required]
         public DateTime DateStart { get; set; }
+
         public DateTime DateEnd { get; set; }
     }
 }

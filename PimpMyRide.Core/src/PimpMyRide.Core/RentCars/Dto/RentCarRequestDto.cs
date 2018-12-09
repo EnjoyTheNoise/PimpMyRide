@@ -7,10 +7,13 @@ namespace PimpMyRide.Core.RentCars.Dto
     {
         [Required]
         public int UserId { get; set; }
+
         [Required]
         public int CarId { get; set; }
+
         [Required]
         public DateTime DateStart { get; set; }
+
         public DateTime DateEnd { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace PimpMyRide.Core.RentCars
 {
     public interface IRentCarService
     {
-        Task<RentCarResponseDto> RentCar(RentCarRequestDto dto, int id, CancellationToken cancellationToken);
+        Task<RentCarResponseDto> RentCar(RentCarRequestDto dto, CancellationToken cancellationToken);
         Task<CancelRentCarResponseDto> CancelRentCar(int id, CancellationToken cancellationToken);
     }
 }
