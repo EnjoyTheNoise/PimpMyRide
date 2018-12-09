@@ -14,11 +14,15 @@ namespace PimpMyRide.Core.Data.UnitOfWork
         private Repository<Manufacturer> _manufacturerRepository;
         private Repository<EngineType> _engineTypeRepository;
         private Repository<User> _userRepository;
+        private Repository<RentCar> _rentCarRepository;
 
         public IRepository<Car> CarRepository => _carRepository ?? (_carRepository = new Repository<Car>(_context));
         public IRepository<Manufacturer> ManufacturerRepository => _manufacturerRepository ?? (_manufacturerRepository = new Repository<Manufacturer>(_context));
         public IRepository<EngineType> EngineTypeRepository => _engineTypeRepository ?? (_engineTypeRepository = new Repository<EngineType>(_context));
         public IRepository<User> UserRepository => _userRepository ?? (_userRepository = new Repository<User>(_context));
+
+        public IRepository<RentCar> RentCarRepository =>
+            _rentCarRepository ?? (_rentCarRepository = new Repository<RentCar>(_context));
 
         public UnitOfWork(PimpMyRideDbContext context)
         {

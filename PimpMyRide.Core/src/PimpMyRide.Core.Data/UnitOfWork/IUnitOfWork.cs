@@ -12,6 +12,7 @@ namespace PimpMyRide.Core.Data.UnitOfWork
         IRepository<Manufacturer> ManufacturerRepository { get; }
         IRepository<EngineType> EngineTypeRepository { get; }
         IRepository<User> UserRepository { get; }
+        IRepository<RentCar> RentCarRepository { get; }
         void Save();
         Task SaveAsync(CancellationToken cancellationToken);
     }
