@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PimpMyRide.Core.Data.Models
 {
@@ -15,5 +16,8 @@ namespace PimpMyRide.Core.Data.Models
 
         [Required]
         public byte[] PasswordSalt { get; set; }
+
+        [Required]
+        public int RoleId { get; set; }
     }
 }
