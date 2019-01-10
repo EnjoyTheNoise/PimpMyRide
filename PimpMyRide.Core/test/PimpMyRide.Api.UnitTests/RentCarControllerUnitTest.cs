@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -11,14 +7,11 @@ using Moq;
 using Moq.AutoMock;
 using PimpMyRide.Core.Api.Infrastructure;
 using PimpMyRide.Core.Api.RentCars;
-using PimpMyRide.Core.Cars;
-using PimpMyRide.Core.Data.Models;
-using PimpMyRide.Core.Data.UnitOfWork;
 using PimpMyRide.Core.RentCars;
 using PimpMyRide.Core.RentCars.Dto;
 using Xunit;
 
-namespace PimpMyRide.Core.UnitTests
+namespace PimpMyRide.Api.UnitTests
 {
     public class RentCarControllerUnitTest
     {
@@ -29,6 +22,7 @@ namespace PimpMyRide.Core.UnitTests
 
         public RentCarControllerUnitTest()
         {
+            //Arrange
             _autoMocker = new AutoMocker();
             _rentCarService = _autoMocker.GetMock<IRentCarService>();
             _mapper = _autoMocker.GetMock<IMapper>();
@@ -36,6 +30,9 @@ namespace PimpMyRide.Core.UnitTests
 
             _rentCarService.Setup(x => x.RentCar(It.IsAny<RentCarRequestDto>(),
                 CancellationToken.None)).ReturnsAsync(new RentCarResponseDto {Id = 1});
+
+            _rentCarService.Setup(x => x.RentCar(null,
+                CancellationToken.None)).ReturnsAsync((RentCarResponseDto) null);
 
             _rentCarService.Setup(x => x.CancelRentCar(1, CancellationToken.None)).ReturnsAsync(new CancelRentCarResponseDto
                 {
