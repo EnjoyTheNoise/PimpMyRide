@@ -151,15 +151,15 @@ namespace PimpMyRide.Core.UnitTests
         }
 
         [Fact]
-        public void GivenInvalidDto_WhenRentCar_ThenExpectTaskFaulted()
+        public async void GivenInvalidDto_WhenRentCar_ThenExpectNull()
         {
-            var result = _rentCarService.RentCar(new RentCarRequestDto
+            var result = await _rentCarService.RentCar(new RentCarRequestDto
             {
                 CarId = 5,
                 UserId = 10
             }, new CancellationToken());
 
-            result.Status.ShouldBe(System.Threading.Tasks.TaskStatus.Faulted);
+            Assert.NotNull(result);
         }
 
         [Fact]

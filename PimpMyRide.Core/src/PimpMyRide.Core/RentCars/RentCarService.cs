@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,7 @@ namespace PimpMyRide.Core.RentCars
 
         public async Task<RentCarResponseDto> RentCar(RentCarRequestDto dto, CancellationToken cancellationToken)
         {
-            var car = await _unitOfWork.CarRepository.Get(c => c.Id == dto.CarId).SingleOrDefaultAsync(cancellationToken);
+            var car =  _unitOfWork.CarRepository.Get(c => c.Id == dto.CarId).SingleOrDefault();
             var newRentCar = _mapper.Map<RentCar>(dto);
 
             if (!car.IsAvailable)
