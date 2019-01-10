@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PimpMyRide.Core.Data.Context;
 
 namespace PimpMyRide.Core.Data.Migrations
 {
     [DbContext(typeof(PimpMyRideDbContext))]
-    partial class PimpMyRideDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181214163038_add-roles-fix")]
+    partial class addrolesfix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
