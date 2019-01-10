@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PimpMyRide.Core.Api.Infrastructure;
+using PimpMyRide.Core.Api.Infrastructure.Consts;
 using PimpMyRide.Core.Tokens;
 using PimpMyRide.Core.Tokens.Dto;
 using PimpMyRide.Core.Users;
@@ -42,7 +43,7 @@ namespace PimpMyRide.Core.Api.Users
                 if (token != null) return Ok(new ApiOkResponse(token));
             }
 
-            var errorMessage = ApiResponse.CreateErrorMessage("Wrong username or password", "Error");
+            var errorMessage = ApiResponse.CreateErrorMessage(ErrorMessages.WrongCredentials, ErrorMessages.DefaultKey);
             return BadRequest(new ApiResponse(StatusCodes.Status400BadRequest, errorMessage));
         }
 
@@ -63,7 +64,7 @@ namespace PimpMyRide.Core.Api.Users
         {
             if (_userService.UserExist(registerRequestDto.Email))
             {
-                var errorMessage = ApiResponse.CreateErrorMessage("Email already exist", "Email");
+                var errorMessage = ApiResponse.CreateErrorMessage(ErrorMessages.EmailExists, ErrorMessages.EmailKey);
                 return BadRequest(new ApiResponse(StatusCodes.Status400BadRequest, errorMessage));
             }
 
