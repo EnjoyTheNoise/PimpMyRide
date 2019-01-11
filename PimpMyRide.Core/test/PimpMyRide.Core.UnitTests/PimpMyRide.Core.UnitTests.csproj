@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\PimpMyRide.Core.Api\PimpMyRide.Core.Api.csproj" />
     <ProjectReference Include="..\..\src\PimpMyRide.Core\PimpMyRide.Core.csproj" />
   </ItemGroup>
 

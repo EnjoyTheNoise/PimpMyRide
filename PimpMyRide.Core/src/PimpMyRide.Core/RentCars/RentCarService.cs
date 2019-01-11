@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -21,10 +22,16 @@ namespace PimpMyRide.Core.RentCars
 
         public async Task<RentCarResponseDto> RentCar(RentCarRequestDto dto, CancellationToken cancellationToken)
         {
-            var car = await _unitOfWork.CarRepository.Get(c => c.Id == dto.CarId).SingleOrDefaultAsync(cancellationToken);
+            var car =  _unitOfWork.CarRepository.Get(c => c.Id == dto.CarId).SingleOrDefault();
+
+            if (car == null)
+            {
+                return null;
+            }
+
             var newRentCar = _mapper.Map<RentCar>(dto);
 
-            if (!car.IsAvailable)
+            if (car.IsAvailable)
             {
                 await _unitOfWork.RentCarRepository.AddAsync(newRentCar, cancellationToken);
                 await _unitOfWork.SaveAsync(cancellationToken);
@@ -40,8 +47,8 @@ namespace PimpMyRide.Core.RentCars
 
         public async Task<CancelRentCarResponseDto> CancelRentCar(int id, CancellationToken cancellationToken)
         {
-            var rentCar = await _unitOfWork.RentCarRepository.Get(r => r.Id == id)
-                .SingleOrDefaultAsync(cancellationToken);
+            var rentCar = _unitOfWork.RentCarRepository.Get(r => r.Id == id)
+                .SingleOrDefault();
 
             if (rentCar == null)
             {
