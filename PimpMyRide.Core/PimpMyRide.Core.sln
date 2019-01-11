@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PimpMyRide.Core", "src\Pimp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PimpMyRide.Core.UnitTests", "test\PimpMyRide.Core.UnitTests\PimpMyRide.Core.UnitTests.csproj", "{5AD98783-01D5-4099-AD84-B2F6E1FFDA09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PimpMyRide.Core.Api", "src\PimpMyRide.Core.Api\PimpMyRide.Core.Api.csproj", "{15A1C0C2-A17E-458D-8A7C-00F460B3E481}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PimpMyRide.Core.Api", "src\PimpMyRide.Core.Api\PimpMyRide.Core.Api.csproj", "{15A1C0C2-A17E-458D-8A7C-00F460B3E481}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PimpMyRide.Core.Data", "src\PimpMyRide.Core.Data\PimpMyRide.Core.Data.csproj", "{F7B5FEAD-2AD5-4A0B-A3CD-D85FBE243A33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PimpMyRide.Core.Data", "src\PimpMyRide.Core.Data\PimpMyRide.Core.Data.csproj", "{F7B5FEAD-2AD5-4A0B-A3CD-D85FBE243A33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PimpMyRide.Api.UnitTests", "test\PimpMyRide.Api.UnitTests\PimpMyRide.Api.UnitTests.csproj", "{CE1888BC-EB51-4774-88E8-A995AF989003}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{F7B5FEAD-2AD5-4A0B-A3CD-D85FBE243A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7B5FEAD-2AD5-4A0B-A3CD-D85FBE243A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7B5FEAD-2AD5-4A0B-A3CD-D85FBE243A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE1888BC-EB51-4774-88E8-A995AF989003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE1888BC-EB51-4774-88E8-A995AF989003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE1888BC-EB51-4774-88E8-A995AF989003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE1888BC-EB51-4774-88E8-A995AF989003}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{5AD98783-01D5-4099-AD84-B2F6E1FFDA09} = {0B2840F3-FDDB-4689-B4FD-65767C631F72}
 		{15A1C0C2-A17E-458D-8A7C-00F460B3E481} = {FB915175-5F0F-4E5B-9460-538AEDFD44B8}
 		{F7B5FEAD-2AD5-4A0B-A3CD-D85FBE243A33} = {FB915175-5F0F-4E5B-9460-538AEDFD44B8}
+		{CE1888BC-EB51-4774-88E8-A995AF989003} = {0B2840F3-FDDB-4689-B4FD-65767C631F72}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95FF0398-F42A-48D6-AC92-1411B8083EED}
