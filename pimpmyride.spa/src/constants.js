@@ -1,1 +1,1 @@
-export const BASE_URL = "hhttps://pimp-my-ride-api.azurewebsites.net/api/"
+export const BASE_URL = "https://pimp-my-ride-api.azurewebsites.net/api/"
